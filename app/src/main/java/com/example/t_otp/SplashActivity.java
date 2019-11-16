@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.t_otp.utils.AppPreferences;
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -22,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
+    private Context ctx;
     private static final boolean AUTO_HIDE = true;
 
     /**
@@ -94,15 +97,15 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_fullscreen);
 
+        ctx = this;
+
         mContentView = findViewById(R.id.fullscreen_content);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent login = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(login);
-                finish();
+                checkLogin();
             }
         }, 3000);
     }
@@ -115,6 +118,20 @@ public class SplashActivity extends AppCompatActivity {
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
+    }
+
+    private void checkLogin(){
+        final AppPreferences mPref = new AppPreferences(ctx);
+        Intent intent;
+
+        if(mPref.isLogedIn()){
+            intent = new Intent(SplashActivity.this, MainActivity.class);
+        }else{
+            intent = new Intent(SplashActivity.this, LoginActivity.class);
+        }
+
+        startActivity(intent);
+        finish();
     }
 
     private void hide() {

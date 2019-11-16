@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SplashActivity</string>
+    <string name="app_name">TimeBased OTP</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -12,4 +12,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">User</string>
+    <string name="title_dashboard">Jadwal</string>
+    <string name="title_notifications">Nilai</string>
+    <string name="login">LOGIN</string>
+    <string name="password">Password</string>
+    <string name="nip">NIP</string>
+    <string name="header_title">Time-Based</string>
+    <string name="sub_title">O T P</string>
+    <string name="app_head_title">Time-Based OTP</string>
+    <string name="app_title_desc">Your application description here</string>
+    <string name="user_text_label">Nama Dosen</string>
 </resources>

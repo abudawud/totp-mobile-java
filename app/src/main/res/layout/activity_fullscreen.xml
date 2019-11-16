@@ -39,7 +39,7 @@
                     android:textColor="@color/textColorPrimary"
                     android:textSize="24sp"
                     android:textStyle="italic"
-                    android:text="Time-Based"
+                    android:text="@string/sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -47,7 +47,7 @@
                     android:textColor="@color/textColorPrimary"
                     android:textSize="28sp"
                     android:textStyle="bold"
-                    android:text="O T P"
+                    android:text="@string/header_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

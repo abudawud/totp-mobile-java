@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+def getLocalProps(key) {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    return properties.getProperty(key)
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -10,6 +16,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        buildConfigField("String", "OTP_MAIN_KEY", getLocalProps("otp.main.key"))
+        buildConfigField("String", "OTP_CHIPER", getLocalProps("otp.chiper"))
+        buildConfigField("int", "OTP_KEY_FORCE", getLocalProps("otp.time.force"))
+        buildConfigField("int", "OTP_KEY_LIFE", getLocalProps("otp.key.life"))
+        buildConfigField("Boolean", "OTP_KEY_DEBUG", getLocalProps("otp.key.debug"))
+
+        buildConfigField("String", "APP_ENDPOINT", getLocalProps("app.endpoint"))
+        buildConfigField("Boolean", "APP_ENCRYPT_RESPONSE", getLocalProps("app.encrypt.response"))
+        buildConfigField("Boolean", "APP_ENCRYPT_REQUEST", getLocalProps("app.encrypt.request"))
     }
     buildTypes {
         release {
@@ -26,6 +43,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.annotation:annotation:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
