@@ -39,14 +39,14 @@ public class APIClient {
                             String jsonStr = response.body().string();
 
                             JSONObject jsonResponse;
-                            JSONObject jsonAltResponse = null;
+                            String jsonAltResponse = null;
                             try {
                                 jsonResponse = new JSONObject(jsonStr);
                                 if (jsonResponse.getBoolean("encrypted")){
                                     // TODO: Decrypt response
-                                    jsonAltResponse = jsonResponse;
+                                    jsonAltResponse = jsonResponse.toString();
                                 }else{
-                                    jsonAltResponse = jsonResponse.getJSONObject("payload");
+                                    jsonAltResponse = jsonResponse.get("payload").toString();
                                 }
                             }catch (JSONException e){
                                 e.printStackTrace();
@@ -54,7 +54,7 @@ public class APIClient {
 
                             if(jsonAltResponse != null) {
                                 MediaType mediaType = response.body().contentType();
-                                ResponseBody body = ResponseBody.create(mediaType, jsonAltResponse.toString());
+                                ResponseBody body = ResponseBody.create(mediaType, jsonAltResponse);
                                 return response.newBuilder().body(body).build();
                             }
 

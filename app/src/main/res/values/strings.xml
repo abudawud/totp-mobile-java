@@ -24,4 +24,8 @@
     <string name="app_head_title">Time-Based OTP</string>
     <string name="app_title_desc">Your application description here</string>
     <string name="user_text_label">Nama Dosen</string>
+    <string name="lbl_ruangan">Ruangan</string>
+    <string name="lbl_separator">:</string>
+    <string name="lbl_logout">Logout</string>
+    <string name="lbl_force_logout">Force Logout</string>
 </resources>

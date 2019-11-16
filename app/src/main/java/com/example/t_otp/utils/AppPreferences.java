@@ -17,6 +17,14 @@ public class AppPreferences {
             mPrefs = context.getSharedPreferences("M_PREF", Context.MODE_PRIVATE);
     }
 
+    public void destroyPref(){
+        setLogedIn(false);
+        setFullName("");
+        setToken("");
+        setOTPKey("");
+        setNIP("");
+    }
+
     public boolean isLogedIn(){
         return mPrefs.getBoolean(PREF_KEY_IS_LOGED_IN, false);
     }
