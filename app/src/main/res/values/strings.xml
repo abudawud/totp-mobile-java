@@ -28,4 +28,19 @@
     <string name="lbl_separator">:</string>
     <string name="lbl_logout">Logout</string>
     <string name="lbl_force_logout">Force Logout</string>
+    <string name="lbl_status_token">Status Token</string>
+    <string name="lbl_otp_key">TOTP Key</string>
+    <string name="status_token_valid">Token Valid</string>
+    <string name="status_token_invalid">Token Expired or Broken</string>
+    <string name="lbl_nim">NIM</string>
+    <string name="lbl_tugas_1">Tugas 1</string>
+    <string name="lbl_uts">UTS</string>
+    <string name="lbl_tugas_2">Tugas 2</string>
+    <string name="lbl_uas">UAS</string>
+    <string name="lbl_praktikum">Praktikum</string>
+    <string name="lbl_nilai_total">Nilai Total</string>
+    <string name="lbl_kode_kelas">Kode Kelas</string>
+    <string name="lbl_id_nilai">ID Nilai</string>
+    <string name="lbl_form_tambah_nilai">Form Tambah Nilai</string>
+    <string name="lbl_form_edit_nilai">Form Edit Nilai</string>
 </resources>

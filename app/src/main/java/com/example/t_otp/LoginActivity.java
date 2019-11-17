@@ -61,8 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         auth.setPassword(edPassword.getText().toString());
         auth.setNIP(edUsername.getText().toString());
 
-        String json = gson.toJson(auth);
-        Call<AuthUser> call = mApi.login(json);
+        Call<AuthUser> call = mApi.login(auth);
 
         call.enqueue(new Callback<AuthUser>() {
             @Override
@@ -75,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                     mPref.setLogedIn(true);
                     mPref.setOTPKey(user.getOTPKey());
                     mPref.setToken(user.getToken());
+                    mPref.setTokenValid(true);
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);

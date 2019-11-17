@@ -9,6 +9,7 @@ public class AppPreferences {
     private final String PREF_KEY_OTP_KEY = "PREF_KEY_OTP_KEY";
     private final String PREF_KEY_NIP = "PREF_KEY_NIP";
     private final String PREF_KEY_IS_LOGED_IN = "PREF_KEY_IS_LOGED_IN";
+    private final String PREF_KEY_TOKEN_STATUS = "PREF_KEY_TOKEN_STATUS";
 
     private static SharedPreferences mPrefs;
 
@@ -23,6 +24,7 @@ public class AppPreferences {
         setToken("");
         setOTPKey("");
         setNIP("");
+        setTokenValid(false);
     }
 
     public boolean isLogedIn(){
@@ -39,6 +41,14 @@ public class AppPreferences {
 
     public void setFullName(String str){
         mPrefs.edit().putString(PREF_KEY_FULL_NAME, str).apply();
+    }
+
+    public Boolean isTokenValid(){
+        return mPrefs.getBoolean(PREF_KEY_TOKEN_STATUS, false);
+    }
+
+    public void setTokenValid(Boolean status){
+        mPrefs.edit().putBoolean(PREF_KEY_TOKEN_STATUS, status).apply();
     }
 
     public String getToken(){

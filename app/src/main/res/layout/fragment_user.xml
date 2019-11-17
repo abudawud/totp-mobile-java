@@ -65,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="50dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
             android:paddingEnd="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +75,7 @@
 
             <TextView
                 android:text="@string/user_text_label"
+                android:textColor="@color/colorForegroundA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -88,15 +89,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
             <TextView
                 android:text="@string/nip"
+                android:textColor="@color/colorForegroundA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="8dp"
                 android:textStyle="italic" />
 
@@ -106,8 +107,43 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:text="@string/lbl_otp_key"
+                android:textColor="@color/colorForegroundA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tv_otp_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:text="@string/lbl_status_token"
+                android:textColor="@color/colorForegroundA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tv_status_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="20sp" />
         </LinearLayout>
 
     <LinearLayout

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 def getLocalProps(key) {
     Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
     return properties.getProperty(key)
 }
 

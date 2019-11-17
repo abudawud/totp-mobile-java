@@ -68,6 +68,9 @@ public class JadwalFragment extends Fragment {
                         jadwalArrayList.addAll(response.body());
                         adapter.notifyDataSetChanged();
                     }
+                }else if(response.code() == 401){
+                    mPref.setTokenValid(false);
+                    ToaLog.info(ctx, ErrorAPI.getMessage(response));
                 }else{
                     ToaLog.info(ctx, ErrorAPI.getMessage(response));
                 }

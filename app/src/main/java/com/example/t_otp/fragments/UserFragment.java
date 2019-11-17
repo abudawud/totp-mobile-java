@@ -20,6 +20,7 @@ import com.example.t_otp.R;
 import com.example.t_otp.helpers.ErrorAPI;
 import com.example.t_otp.helpers.ToaLog;
 import com.example.t_otp.interfaces.InterfaceAPI;
+import com.example.t_otp.models.AuthUser;
 import com.example.t_otp.models.ResponseStatus;
 import com.example.t_otp.utils.APIClient;
 import com.example.t_otp.utils.AppPreferences;
@@ -37,7 +38,7 @@ public class UserFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        TextView tvName, tvNIP;
+        TextView tvName, tvNIP, tvTokenValid, tvTOTP;
         Button btnLogout, btnFLogout;
 
         ctx = getContext();
@@ -49,10 +50,21 @@ public class UserFragment extends Fragment {
         tvName = root.findViewById(R.id.user_name);
         tvNIP = root.findViewById(R.id.tv_nip);
         btnLogout = root.findViewById(R.id.btn_logout);
+        tvTokenValid = root.findViewById(R.id.tv_status_token);
+        tvTOTP = root.findViewById(R.id.tv_otp_key);
         btnFLogout = root.findViewById(R.id.btn_f_logout);
 
         tvName.setText(mPref.getFullName());
         tvNIP.setText(mPref.getNIP());
+        if(mPref.isTokenValid()){
+            tvTokenValid.setText(R.string.status_token_valid);
+            tvTokenValid.setTextColor(ctx.getResources().getColor(R.color.colorPrimary));
+        }else{
+            tvTokenValid.setText(R.string.status_token_invalid);
+            tvTokenValid.setTextColor(ctx.getResources().getColor(R.color.colorAccent));
+        }
+
+        tvTOTP.setText("..." + mPref.getOTPKey().substring(20));
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +104,9 @@ public class UserFragment extends Fragment {
     }
 
     private void logout(){
-        Call <ResponseStatus> call = mApi.logout(mPref.getNIP(), mPref.getToken());
+        AuthUser auth = new AuthUser();
+        auth.setNIP(mPref.getNIP());
+        Call <ResponseStatus> call = mApi.logout(mPref.getNIP(), mPref.getToken(), auth);
         call.enqueue(new Callback<ResponseStatus>() {
             @Override
             public void onResponse(Call<ResponseStatus> call, Response<ResponseStatus> response) {
