@@ -11,6 +11,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+    public static String OTP_PRIVATE_KEY;
+    public static String OTP_TOKEN_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

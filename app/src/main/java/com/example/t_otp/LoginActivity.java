@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.t_otp.helpers.CEncryption;
 import com.example.t_otp.helpers.ErrorAPI;
 import com.example.t_otp.helpers.ToaLog;
 import com.example.t_otp.interfaces.InterfaceAPI;
@@ -53,10 +54,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(){
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .create();
-
         AuthUser auth = new AuthUser();
         auth.setPassword(edPassword.getText().toString());
         auth.setNIP(edUsername.getText().toString());
@@ -75,6 +72,9 @@ public class LoginActivity extends AppCompatActivity {
                     mPref.setOTPKey(user.getOTPKey());
                     mPref.setToken(user.getToken());
                     mPref.setTokenValid(true);
+
+                    MainActivity.OTP_PRIVATE_KEY = user.getOTPKey();
+                    MainActivity.OTP_TOKEN_KEY = user.getToken();
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);

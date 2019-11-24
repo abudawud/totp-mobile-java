@@ -20,6 +20,8 @@ android {
 
         buildConfigField("String", "OTP_MAIN_KEY", getLocalProps("otp.main.key"))
         buildConfigField("String", "OTP_CHIPER", getLocalProps("otp.chiper"))
+        buildConfigField("String", "OTP_INIT_VECTOR", getLocalProps("otp.init.vector"))
+        buildConfigField("String", "OTP_ALGORITHM", getLocalProps("otp.algorithm"))
         buildConfigField("int", "OTP_KEY_FORCE", getLocalProps("otp.time.force"))
         buildConfigField("int", "OTP_KEY_LIFE", getLocalProps("otp.key.life"))
         buildConfigField("Boolean", "OTP_KEY_DEBUG", getLocalProps("otp.key.debug"))

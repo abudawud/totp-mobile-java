@@ -126,6 +126,8 @@ public class SplashActivity extends AppCompatActivity {
 
         if(mPref.isLogedIn()){
             intent = new Intent(SplashActivity.this, MainActivity.class);
+            MainActivity.OTP_PRIVATE_KEY = mPref.getOTPKey();
+            MainActivity.OTP_TOKEN_KEY = mPref.getToken();
         }else{
             intent = new Intent(SplashActivity.this, LoginActivity.class);
         }
