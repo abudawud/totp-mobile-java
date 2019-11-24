@@ -5,22 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.t_otp.helpers.CEncryption;
 import com.example.t_otp.helpers.ErrorAPI;
 import com.example.t_otp.helpers.ToaLog;
 import com.example.t_otp.interfaces.InterfaceAPI;
 import com.example.t_otp.models.AuthUser;
 import com.example.t_otp.utils.APIClient;
 import com.example.t_otp.utils.AppPreferences;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
