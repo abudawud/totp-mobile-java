@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
     public static String OTP_PRIVATE_KEY;
     public static String OTP_TOKEN_KEY;
+    public static String EXTRA_KD_KELAS_KEY = "KODE_KELAS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

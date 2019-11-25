@@ -3,6 +3,7 @@ package com.example.t_otp.interfaces;
 import com.example.t_otp.models.AuthUser;
 import com.example.t_otp.models.Jadwal;
 import com.example.t_otp.models.Nilai;
+import com.example.t_otp.models.NilaiKelas;
 import com.example.t_otp.models.ResponseStatus;
 
 import java.util.List;
@@ -34,8 +35,9 @@ public interface InterfaceAPI {
             @Header("X-Auth-Token") String authToken
     );
 
-    @GET("nilai")
+    @GET("kelas/{id}/nilai")
     Call<List<Nilai>> fetchNilai(
+            @Path("id") String kdKelas,
             @Header("X-Auth-Nip") String authNIP,
             @Header("X-Auth-Token") String authToken
     );
@@ -65,6 +67,12 @@ public interface InterfaceAPI {
     @GET("nilai/{id}")
     Call<Nilai> getNilai(
             @Path("id") String id,
+            @Header("X-Auth-Nip") String authNIP,
+            @Header("X-Auth-Token") String authToken
+    );
+
+    @GET("kelas/")
+    Call<List<NilaiKelas>> getNilaiKelas(
             @Header("X-Auth-Nip") String authNIP,
             @Header("X-Auth-Token") String authToken
     );

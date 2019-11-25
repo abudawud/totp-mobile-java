@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardUseCompatPadding="true"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardElevation="3dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/colorForeground"
+                android:text="@string/lbl_kode_kelas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/colorForeground"
+                android:layout_width="wrap_content"
+                android:text="@string/lbl_separator"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="@color/colorForeground"
+                android:id="@+id/tv_kode_kelas"
+                android:textStyle="italic"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/lbl_kode_matkul"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/lbl_separator"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5">
+                <TextView
+                    android:id="@+id/tv_kode_matkul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/lbl_nama_matkul"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="@string/lbl_separator"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_nama_matkul"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

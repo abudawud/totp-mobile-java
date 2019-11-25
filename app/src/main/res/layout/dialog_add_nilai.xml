@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:enabled="false"
                     android:id="@+id/ed_kd_kelas"
                     android:inputType="textCapCharacters"
                     android:hint="@string/lbl_kode_kelas"

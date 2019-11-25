@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.t_otp.MainActivity;
 import com.example.t_otp.R;
 import com.example.t_otp.adapters.NilaiAdapter;
 import com.example.t_otp.helpers.ErrorAPI;
@@ -47,11 +48,22 @@ public class NilaiFragment extends Fragment {
     private ArrayList<Nilai> nilaiArrayList = new ArrayList<>();
     private AppPreferences mPref;
 
+    private String mKdKelas;
+
     private final Integer PROCESS_ADD_NILAI = 1;
     private final Integer PROCESS_EDIT_NILAI = 2;
 
     private static final String TAG = "NilaiFragment";
 
+    public static Fragment newInstance(String kdKelas){
+        NilaiFragment fragment = new NilaiFragment();
+
+        Bundle args = new Bundle();
+        args.putString(MainActivity.EXTRA_KD_KELAS_KEY, kdKelas);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -110,7 +122,15 @@ public class NilaiFragment extends Fragment {
             }
         });
 
-        fetchNilai();
+        Bundle args = getArguments();
+        String kdKelas = "NONE";
+
+        if(args != null){
+            kdKelas = args.getString(MainActivity.EXTRA_KD_KELAS_KEY);
+        }
+
+        mKdKelas = kdKelas;
+        fetchNilai(kdKelas);
 
         return root;
     }
@@ -204,6 +224,9 @@ public class NilaiFragment extends Fragment {
         LayoutInflater inflater = LayoutInflater.from(ctx);
         final View view = inflater.inflate(R.layout.dialog_add_nilai, null);
 
+        EditText editText = view.findViewById(R.id.ed_kd_kelas);
+        editText.setText(mKdKelas);
+
         final AlertDialog dialog = new AlertDialog.Builder(ctx).setView(view)
                 .setNegativeButton("Batal", null)
                 .setPositiveButton("Tambah", new DialogInterface.OnClickListener() {
@@ -295,8 +318,8 @@ public class NilaiFragment extends Fragment {
         });
     }
 
-    private void fetchNilai(){
-        Call<List<Nilai>> call = mAPI.fetchNilai(mPref.getNIP(), mPref.getToken());
+    private void fetchNilai(String kdKelas){
+        Call<List<Nilai>> call = mAPI.fetchNilai(kdKelas, mPref.getNIP(), mPref.getToken());
         call.enqueue(new Callback<List<Nilai>>() {
             @Override
             public void onResponse(Call<List<Nilai>> call, Response<List<Nilai>> response) {

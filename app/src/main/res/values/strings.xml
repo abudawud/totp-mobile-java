@@ -43,4 +43,11 @@
     <string name="lbl_id_nilai">ID Nilai</string>
     <string name="lbl_form_tambah_nilai">Form Tambah Nilai</string>
     <string name="lbl_form_edit_nilai">Form Edit Nilai</string>
+    <string name="title_activity_nilai">Daftar Nilai</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lbl_nama_matkul">Nama Matkul</string>
+    <string name="lbl_kode_matkul">Kode Matkul</string>
 </resources>

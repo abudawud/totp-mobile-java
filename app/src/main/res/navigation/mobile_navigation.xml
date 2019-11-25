@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.t_otp.fragments.NilaiFragment"
+        android:name="com.example.t_otp.fragments.NilaiKelasFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_nilai" />
 </navigation>
