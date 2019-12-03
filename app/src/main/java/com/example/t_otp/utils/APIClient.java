@@ -1,8 +1,7 @@
 package com.example.t_otp.utils;
 
-import android.util.Log;
-
 import com.example.t_otp.BuildConfig;
+import com.example.t_otp.helpers.CEncryption;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,11 +12,13 @@ import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.Buffer;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.POST;
 
 public class APIClient {
     private static final String TAG = "APIClient";
@@ -46,9 +47,29 @@ public class APIClient {
                         public Response intercept(final Chain chain) throws IOException {
                             Request request = chain.request();
                             Response response;
+                            Request.Builder builder = request.newBuilder();
 
-                            if(request.method().equals("POST") || request.method().equals("PATCH")) {
-                                Log.d(TAG, "intercept: " + bodyToString(request));
+                            String method = request.method();
+                            if(method.equals("POST") || method.equals("PATCH")){
+                                String requestBody = bodyToString(request);
+
+                                if(BuildConfig.APP_ENCRYPT_REQUEST){
+                                    if(request.url().encodedPath().equals("/login")){
+                                        requestBody = CEncryption.encrypt(requestBody, false);
+                                    }else{
+                                        requestBody=CEncryption.encrypt(requestBody, true);
+                                    }
+                                }
+
+                                if(method.equals("POST")) {
+                                    request = builder
+                                            .post(RequestBody.create(request.body().contentType(), requestBody))
+                                            .build();
+                                }else{
+                                    request = builder
+                                            .patch(RequestBody.create(request.body().contentType(), requestBody))
+                                            .build();
+                                }
                             }
 
                             response = chain.proceed(request);
@@ -60,8 +81,13 @@ public class APIClient {
                             try {
                                 jsonResponse = new JSONObject(jsonStr);
                                 if (jsonResponse.getBoolean("encrypted")){
-                                    // TODO: Decrypt response
-                                    jsonAltResponse = jsonResponse.toString();
+                                    String cipher = jsonResponse.getJSONObject("payload").get("data").toString();
+
+                                    if(request.url().encodedPath().equals("/login")){
+                                        jsonAltResponse = CEncryption.decrypt(cipher, false);
+                                    }else{
+                                        jsonAltResponse = CEncryption.decrypt(cipher, true);
+                                    }
                                 }else{
                                     jsonAltResponse = jsonResponse.get("payload").toString();
                                 }
